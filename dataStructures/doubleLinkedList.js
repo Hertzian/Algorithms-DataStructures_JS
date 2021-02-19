@@ -225,7 +225,7 @@ class DoublyLinkedList {
     let newNode = new Node(val)
     let beforeNode = this.get(index - 1)
     let afterNode = beforeNode.next
-    
+
     beforeNode.next = newNode
     newNode.prev = beforeNode
     newNode.next = afterNode
@@ -234,6 +234,46 @@ class DoublyLinkedList {
     this.length++
 
     return true
+  }
+
+  /**
+   * If the index is less than zero or greater than or equal to the length return undefined
+   * If the index is 0, shift
+   * If the index is the same as the length - 1, pop
+   * Use the get method to retrieve the item to be removed
+   * Update the next and prev properties to remove the found node from the list
+   * Set next and prev to null on the found node
+   * Decrement the length
+   * Return the removed node
+   */
+  remove(index) {
+    if (index < 0 || index >= this.length) {
+      return undefined
+    }
+
+    if (index === 0) {
+      this.shift()
+    }
+
+    if (index === this.length - 1) {
+      this.pop()
+    }
+
+    let removedNode = this.get(index)
+    let nextNode = removedNode.next
+    let prevNode = removedNode.prev
+
+    // alternative...
+    // removedNode.prev.next = removedNode.next 
+    // removedNode.next.prev = removedNode.prev
+
+    prevNode.next = nextNode
+    nextNode.prev = prevNode   
+    removedNode.next = null
+    removedNode.prev = null
+
+    this.length--
+    return removedNode
   }
 }
 
