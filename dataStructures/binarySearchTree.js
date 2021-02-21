@@ -108,7 +108,51 @@ class BinarySearchTree {
    *    -If there is, move to that node and repeat these steps
    *    -If there is not, we're done searching!
    */
-  search(valu) {}
+  search(value) {
+    if (this.root === null) {
+      return false
+    }
+
+    let current = this.root,
+      found = false
+
+    while (current && !found) {
+      if (value < current.value) {
+        current = current.left
+      } else if (value > current.value) {
+        current = current.right
+      } else {
+        found = true
+      }
+    }
+
+    if (!found) {
+      return undefined
+    }
+
+    return false
+  }
+
+  contains(value) {
+    if (this.root === null) {
+      return false
+    }
+
+    let current = this.root,
+      found = false
+
+    while (current && !found) {
+      if (value < current.value) {
+        current = current.left
+      } else if (value > current.value) {
+        current = current.right
+      } else {
+        return true
+      }
+    }
+
+    return false
+  }
 }
 
 let tree = new BinarySearchTree()
