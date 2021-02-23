@@ -155,6 +155,7 @@ class BinarySearchTree {
   }
 
   /**
+   * BFS -  Breadth First Search
    * Create a queue (this can be an array) and a variable to store the values of nodes visited
    * Place the rrot node in the queue
    * Loop as long as there is anything in the queue
@@ -268,15 +269,11 @@ class BinarySearchTree {
     const current = this.root
 
     function traverse(node) {
-      if(node.left) {
-        traverse(node.left)
-      }
+      node.left && traverse(node.left)
 
       data.push(node.value)
 
-      if(node.right) {
-        traverse(node.right)
-      }
+      node.right && traverse(node.right)
     }
 
     traverse(current)
