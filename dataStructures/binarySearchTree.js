@@ -163,22 +163,22 @@ class BinarySearchTree {
    *  -If there is a right property on the node dequeued - add it to the queue
    * Return the variable that stores the values
    */
-  breadthFirstSearch(){
+  breadthFirstSearch() {
     let data = [],
       queue = [],
       node = this.root
 
     queue.push(node)
 
-    while(queue.length) {
+    while (queue.length) {
       node = queue.shift()
       data.push(node.value)
 
-      if(node.left) { 
+      if (node.left) {
         queue.push(node.left)
       }
 
-      if(node.right) {
+      if (node.right) {
         queue.push(node.right)
       }
 
@@ -188,7 +188,7 @@ class BinarySearchTree {
 
   /**
    * DFS - Deep First Search
-   * Preorder
+   * PreOrder
    * Create a variable to store the values of nodes visited
    * Store the root of the BST in a variable called current
    * Write a helper function wich accepts a node
@@ -204,6 +204,37 @@ class BinarySearchTree {
     function traverse(node) {
       data.push(node.value)
 
+      if (node.left) {
+        traverse(node.left)
+      }
+
+      if (node.right) {
+        traverse(node.right)
+      }
+    }
+
+    traverse(current)
+
+    return data
+  }
+
+  /**
+   * DFS - Deep First Search
+   * PostOrder
+   * Create a variable to store the values of nodes visited
+   * Store the root of the BST in a variable called current
+   * Write a helper function which accepts a node
+   *  -If the node has a left property, call the helper function with the left property on the node
+   *  -If the node has a right property, call the helper funciton with the right property on the node
+   *  -Push the value of the node to the variable that stores the values
+   *  -Invoke the helper funciton with the current variable
+   * Return the array of values
+   */
+  postOrder() {
+    let data = []
+    let current = this.root
+
+    function traverse(node) {
       if(node.left) {
         traverse(node.left)
       }
@@ -211,6 +242,8 @@ class BinarySearchTree {
       if(node.right) {
         traverse(node.right)
       }
+
+      data.push(node.value)
     }
 
     traverse(current)
