@@ -17,10 +17,10 @@ class MaxBinaryHeap {
    */
   insert(element) {
     this.values.push(element)
-    this.bubbeUp()
+    this.bubbleUp()
   }
 
-  bubbeUp() {
+  bubbleUp() {
     let idx = this.values.length - 1
     const element = this.values[idx]
 
