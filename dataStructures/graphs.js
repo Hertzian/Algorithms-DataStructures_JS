@@ -40,5 +40,36 @@ class Graph {
     })
   }
 
-  
+  /**
+   * The function should accept a vertex to remove
+   * The function should loop as long as there are any other vertices in the adjacency list for that vertex
+   * Inside of the loop, call our removeEdge function with the vertex we are removing and any values in the adjacency list for that vertex
+   * Delete the key in the adjacency list for that vertex
+   */
+  removeVertex(vertex) {
+    // this.adjacencyList[vertex].filter((v) => {
+    //   this.adjacencyList[v] === vertex
+    //   this.removeEdge(v, vertex)
+    // })
+
+    // delete this.adjacencyList[vertex]
+
+    while (this.adjacencyList[vertex].length) {
+      const adjacentVertex = this.adjacencyList[vertex].pop()
+      this.removeEdge(vertex, adjacentVertex)
+    }
+  }
 }
+
+let g = new Graph()
+g.addVertex('Dallas')
+g.addVertex('Tokyo')
+g.addVertex('Aspen')
+g.addVertex('Los Angeles')
+g.addVertex('Hong Kong')
+g.addEdge('Dallas', 'Tokyo')
+g.addEdge('Dallas', 'Aspen')
+g.addEdge('Hong Kong', 'Tokyo')
+g.addEdge('Hong Kong', 'Dallas')
+g.addEdge('Los Angeles', 'Honk Kong')
+g.addEdge('Los Angeles', 'Aspen')
